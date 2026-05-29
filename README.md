@@ -12,7 +12,7 @@ gameplay audio, plus the key prompts used to create the art direction.
 
 **Use the cheatsheet:** [Hero Quest platformer build cheatsheet](https://link.excalidraw.com/readonly/WwXubwX0nnIl7SagZkVV?darkMode=true&utm_source=github&utm_medium=readme_header&utm_campaign=vgd09)
 
-**Steal the prompts:** [Open the prompt recipe](prompts.html)
+**Steal the prompts:** [Download the prompt recipe](prompts.pdf)
 
 **Play the finished game:** [Hero Quest demo](https://aiod.dev/play-hero-quest?utm_source=github&utm_medium=readme_header&utm_campaign=vgd09)
 
@@ -49,7 +49,7 @@ gameplay audio, plus the key prompts used to create the art direction.
 
 ```text
 preview.gif
-prompts.html
+prompts.pdf
 public/assets/
   index.json
   backgrounds/
