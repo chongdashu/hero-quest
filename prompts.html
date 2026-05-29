@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Hero Quest Prompt Recipe</title>
+<style>
+  :root {
+    --bg: #10131a;
+    --panel: #171b24;
+    --panel-2: #202634;
+    --text: #f4f0e8;
+    --muted: #a9a395;
+    --line: #343b4e;
+    --gold: #f4b63f;
+    --green: #76d275;
+    --blue: #6eb6ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 20px clamp(18px, 4vw, 48px);
+    background: rgba(16, 19, 26, 0.94);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(10px);
+  }
+  h1 { margin: 0 0 6px; font-size: clamp(28px, 4vw, 48px); line-height: 1; }
+  header p { max-width: 760px; margin: 0; color: var(--muted); }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .links a {
+    color: var(--bg);
+    background: var(--gold);
+    border-radius: 6px;
+    padding: 8px 12px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 13px;
+  }
+  nav a {
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+  main {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 36px clamp(18px, 4vw, 48px) 80px;
+  }
+  section {
+    margin: 0 0 34px;
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel);
+    scroll-margin-top: 160px;
+  }
+  h2 { margin: 0 0 6px; font-size: 24px; color: var(--gold); }
+  .goal { margin: 0 0 16px; color: var(--muted); }
+  .prompt {
+    margin: 14px 0 0;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0b0d12;
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 12px;
+    background: var(--panel-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .label {
+    color: var(--green);
+    font: 700 12px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  button {
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 4px 9px;
+    cursor: pointer;
+    font: 12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  button:hover { border-color: var(--blue); }
+  button.copied { color: var(--green); border-color: var(--green); }
+  pre {
+    margin: 0;
+    padding: 16px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #e8edf6;
+    font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .note {
+    margin: 18px 0 0;
+    color: var(--muted);
+    border-left: 3px solid var(--gold);
+    padding-left: 12px;
+  }
+  footer {
+    color: var(--muted);
+    text-align: center;
+    padding: 32px 18px;
+    border-top: 1px solid var(--line);
+  }
+  footer a { color: var(--gold); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Hero Quest Prompt Recipe</h1>
+  <p>The short version: start with a playable mockup, turn it into reusable
+  atlases, then create animation-ready character references. These are the key
+  user prompts from the build.</p>
+  <div class="links">
+    <a href="https://www.youtube.com/watch?v=GstYJ-_ZBZo&utm_source=github&utm_medium=prompts_header&utm_campaign=vgd09">Watch the build</a>
+    <a href="https://link.excalidraw.com/readonly/WwXubwX0nnIl7SagZkVV?darkMode=true&utm_source=github&utm_medium=prompts_header&utm_campaign=vgd09">Open the cheatsheet</a>
+    <a href="https://aiod.dev/play-hero-quest?utm_source=github&utm_medium=prompts_header&utm_campaign=vgd09">Play the demo</a>
+  </div>
+  <nav>
+    <a href="#mockup">Mockup</a>
+    <a href="#tiles">Tile Atlas</a>
+    <a href="#ui">UI Atlas</a>
+    <a href="#backgrounds">Backgrounds</a>
+    <a href="#hero">Hero</a>
+    <a href="#orc">Orc</a>
+    <a href="#splash">Splash</a>
+    <a href="#audio">Audio</a>
+  </nav>
+</header>
+
+<main>
+  <section id="mockup">
+    <h2>1. Find The Game Look</h2>
+    <p class="goal">Do not ask for a pretty illustration. Ask for a simple game
+    screen with readable mechanics, reusable platform shapes, and one enemy.</p>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Mockup candidates</span><button>copy</button></div>
+<pre>$imagegen to create 4 mockups that would serve well to visualise this scene.
+try to consider 4 different themes
+e.g., one could be a 'prototype robot theme' where everything feels like a lab / grid , another could be a hero quest theme, etc.</pre>
+    </div>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Reject non-game outputs</span><button>copy</button></div>
+<pre>1 and 2 are what i'm talking about,
+3 looks 3d - nope
+4 looks more like a picture
+
+let's do 2 more alternates, more like 1 and 2 in terms of its gaminess</pre>
+    </div>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Constrain the platform grammar</span><button>copy</button></div>
+<pre>let's geneate more mock ups, but really focus on keeping things simple.
+so reachable platforms should not have much depth and should be standalone.
+have a fixed number of platform types, etc.
+imagine you have a fixed atlas tile set</pre>
+    </div>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Add one enemy</span><button>copy</button></div>
+<pre>this is great, perhaps now at least include 1 appropriate enemy
+i like the theme of 1 and 2 so continue using those</pre>
+    </div>
+  </section>
+
+  <section id="tiles">
+    <h2>2. Turn The Mockup Into A Gameplay Atlas</h2>
+    <p class="goal">The atlas needs whole platforms for fast placement and
+    repeatable tiles for level construction.</p>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Gameplay atlas</span><button>copy</button></div>
+<pre>$imagegen to create a chroma atlas of assets used based on this mockup
+needs whole platforms that can be placed
+and repeatable tiles that can be tiled
+key props and objects</pre>
+    </div>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Transparent atlas</span><button>copy</button></div>
+<pre>now make a transparent version $imagegen</pre>
+    </div>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Character references</span><button>copy</button></div>
+<pre>$imagegen  can we have a standalone image of the character and one of the enemy? to serve as reference images for further development</pre>
+    </div>
+  </section>
+
+  <section id="ui">
+    <h2>3. Generate UI That Can Be Driven At Runtime</h2>
+    <p class="goal">The important trick is to leave fill areas transparent so
+    health and coin progress can be controlled by code.</p>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">UI atlas</span><button>copy</button></div>
+<pre>ok great, based on [Image #1], let's use $imagegen to generate a ui elements atlas that we can have for the game
+player portrait + health bar that is is dymiacally fileld (so a tranparent bar area)
+we should varants of the  portraits - healthy, hurt, worn out (low health), defeated (x_x).
+we should also consider how we show the coin collections</pre>
+    </div>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Manifest requirement</span><button>copy</button></div>
+<pre>for both atlases, let's have a manifest.json that outlines the name, bounds, etc.</pre>
+    </div>
+  </section>
+
+  <section id="backgrounds">
+    <h2>4. Build Parallax Layers</h2>
+    <p class="goal">Far and mid layers should be light and non-distracting.
+    Foreground should sit at the bottom and tile horizontally.</p>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Parallax layer set</span><button>copy</button></div>
+<pre>see our [Image #1] , let's now do a background test gym,
+we want to have parallax in our level, so you have to have images of the right resolution that can be layered on erach other  for far, medium, and foreground.
+make sure that the colors used in far and medium and lighter to not clash with what will go into the main game platforms/characters/props.
+the foreground will also be of a different hue/saturation to not distract from the main game, but would sit in front, between the main game and the camera.
+$imagegen to create these images and then put them in the background scene
+have adjustments in the debug panel to allow us to shift them up/down/left/right or scale them, and to be able to save them to configs too.</pre>
+    </div>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Regenerate with tiling constraints</span><button>copy</button></div>
+<pre>several issues
+1. the mid ground has no opacity, so it just blocks the far ground - it really shouldn't the sky, etc.
+2. the foreground has artifacts floating in the middle etc. it should really be pegged to the bottom of the screen with no floating elements.
+3. the images do not tile horizontally nicely.
+regenerate $imagegen</pre>
+    </div>
+  </section>
+
+  <section id="hero">
+    <h2>5. Create The Hero Anchor And Animations</h2>
+    <p class="goal">The useful direction was simple: preserve the chibi
+    mockup identity, avoid crouch, make attack a punch, keep idle still.</p>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Anchor and animation set</span><button>copy</button></div>
+<pre>ok let's do the anchor and the animations
+we don't need crouch
+the attack should be a punch
+use the cursor sdk with prompts
+can we store the results/runs in this repo?</pre>
+    </div>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Use chroma versions</span><button>copy</button></div>
+<pre>ok let's not pass in transparent bgs for now, give chroma versions, there's a bug in the cli that tries to create a faux transparent bg
+let's do a new run for the anchore</pre>
+    </div>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Parallel animation batch</span><button>copy</button></div>
+<pre>let's generate the animations now using the sdk
+make sure to use a simple prompt and parallelise so we can test the sdk</pre>
+    </div>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Improve idle, jump, walk</span><button>copy</button></div>
+<pre>idle looks like he's doing push ups, make it less movement
+jump looks too much, hands in the air etc. make it 
+add walk too
+do as a new run</pre>
+    </div>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Standing idle</span><button>copy</button></div>
+<pre>no we want video modle, but we want a simpler prompt for idle so standing still</pre>
+    </div>
+
+    <p class="note">The final hero pass used a V2 reference and kept the idle
+    separate from the action batch so the character would actually stand still.</p>
+  </section>
+
+  <section id="orc">
+    <h2>6. Add The Purple Orc</h2>
+    <p class="goal">Green enemies fought the green chroma workflow. The usable
+    enemy became a non-green purple orc with a sword.</p>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Integrate enemy character</span><button>copy</button></div>
+<pre>ok cool now please let's integrate an enemy character
+
+/Users/chong-u/Projects/vgd-phaser-starter/spriterrific-sdk/animation-runs/20260527T135021Z-round3-enemy-v3-purple-orc-actions-w (no run)
+
+/Users/chong-u/Projects/vgd-phaser-starter/spriterrific-sdk/animation-runs/20260527T142703Z-round3-enemy-v3-purple-orc-run-sword-locked-w (run)
+
+add to assets.json, add to the character gym as a drop down, where we can set the same things with the bounds
+
+then integrate into the playground, with the level editor being able to add 'actors'</pre>
+    </div>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Enemy AI</span><button>copy</button></div>
+<pre>let's do ai for the orc
+1. he patrols around, stops for a while and continues patroling
+2. he doesn't walk off ledges
+3. if he detects the player and is on the same platform, he will run to the player.
+4. after an attempted hit, there is a cooldown, then he continues.</pre>
+    </div>
+  </section>
+
+  <section id="splash">
+    <h2>7. Splash And Game Identity</h2>
+    <p class="goal">The splash screen should sell the game immediately, then
+    let the player press a key or tap to begin.</p>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Splash candidates</span><button>copy</button></div>
+<pre>$imagegen to generate 4 splash screen candidates for our game
+using our character, orc and overall assets as source images, but creating something stylised for the splash screen.
+
+Rename it to 'Hero Quest' and remove any internal descriptions from the menu
+also in game doens't need the in game hp, speed, etc. as that's all in the debug</pre>
+    </div>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Use chosen candidate</span><button>copy</button></div>
+<pre>candidate 2 is the best, so let's use that as the asplash image</pre>
+    </div>
+  </section>
+
+  <section id="audio">
+    <h2>8. Music And Sound Effects</h2>
+    <p class="goal">Audio should reinforce the bright fantasy platformer tone:
+    coins sparkle, punches feel soft and readable, the portal feels magical.</p>
+
+    <div class="prompt">
+      <div class="bar"><span class="label">Theme and SFX</span><button>copy</button></div>
+<pre>now let's integrate appropriate theme music into our game $music 
+add $sound-effects across the board for the main gameplay aspects - recognising the specific characters, items , objects and theme of our game.</pre>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Watch the video, use the cheatsheet, then adapt the prompts for your own
+  platformer, RPG, fighter, or arcade prototype.
+</footer>
+
+<script>
+  for (const button of document.querySelectorAll("button")) {
+    button.addEventListener("click", async () => {
+      const pre = button.closest(".prompt").querySelector("pre");
+      await navigator.clipboard.writeText(pre.textContent.trim());
+      button.textContent = "copied";
+      button.classList.add("copied");
+      setTimeout(() => {
+        button.textContent = "copy";
+        button.classList.remove("copied");
+      }, 1200);
+    });
+  }
+</script>
+</body>
+</html>

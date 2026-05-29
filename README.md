@@ -1,42 +1,39 @@
-# Hero Quest: Public Asset Pack
+# Hero Quest Asset Pack
 
 ![Hero Quest gameplay](preview.gif)
 
-*Gameplay: collect coins, avoid spikes, fight or dodge the purple orc, and
-unlock the portal at the end of each level.*
+Build a polished fantasy platformer faster.
 
-Hero Quest is a bright fantasy platformer built from a single AI-generated
-concept image. This public repo is the free companion resource pack: curated
-runtime assets, manifests, and links from the video.
+This pack gives you the real runtime assets from the Hero Quest build: animated
+characters, platform tiles, UI, parallax backgrounds, level data, configs, and
+gameplay audio, plus the key prompts used to create the art direction.
 
-**Watch the full tutorial:** [Turning One Image Into a Playable iPhone Game -
-Full Tutorial](https://www.youtube.com/watch?v=GstYJ-_ZBZo&utm_source=github&utm_medium=readme_header&utm_campaign=vgd09)
+**Watch the build:** [Turning One Image Into a Playable iPhone Game - Full Tutorial](https://www.youtube.com/watch?v=GstYJ-_ZBZo&utm_source=github&utm_medium=readme_header&utm_campaign=vgd09)
 
-**Excalidraw Cheatsheet:** [Hero Quest platformer build cheatsheet](https://link.excalidraw.com/readonly/WwXubwX0nnIl7SagZkVV?darkMode=true&utm_source=github&utm_medium=readme_header&utm_campaign=vgd09)
+**Use the cheatsheet:** [Hero Quest platformer build cheatsheet](https://link.excalidraw.com/readonly/WwXubwX0nnIl7SagZkVV?darkMode=true&utm_source=github&utm_medium=readme_header&utm_campaign=vgd09)
 
-> **Live demo:** [Play Hero Quest](https://aiod.dev/play-hero-quest?utm_source=github&utm_medium=readme_header&utm_campaign=vgd09)
+**Steal the prompts:** [Open the prompt recipe](prompts.html)
 
-## What You Get
+**Play the finished game:** [Hero Quest demo](https://aiod.dev/play-hero-quest?utm_source=github&utm_medium=readme_header&utm_campaign=vgd09)
 
-This repo does **not** include the game source code. It is the public asset
-pack that accompanies the video.
+## Grab The Pack
 
-- **Runtime asset catalog** - `public/assets/index.json` records every curated
-  asset, loader key, frame size, frame count, animation hint, config file, and
-  authored level file.
-- **Gameplay atlas** - `public/assets/tiles/quest/atlas-transparent.png` plus
-  `atlas-transparent.manifest.json`.
-- **UI atlas** - `public/assets/ui/quest/ui-atlas-transparent.png` plus
-  `ui-atlas-transparent.manifest.json`.
-- **Hero spritesheets** - `public/assets/hero-v2/` includes idle, walk, run,
-  jump, punch, hurt, death, portal-entry, anchors, previews, and manifest.
-- **Purple-orc spritesheets** - `public/assets/enemies/purple-orc/` includes
-  idle, walk, run, jump, attack, hurt, death, anchor, previews, and manifest.
-- **Parallax backgrounds** - `public/assets/backgrounds/quest-far.png`,
-  `quest-mid.png`, and `quest-foreground.png`.
-- **Audio** - `public/assets/audio/` includes the theme and gameplay SFX.
-- **Config and level JSON** - `public/assets/config/` and
-  `public/assets/levels/` show the data-driven runtime shape.
+- **Hero character** with idle, walk, run, jump, punch, hurt, death, and portal
+  entry spritesheets.
+- **Purple orc enemy** with idle, walk, run, jump, attack, hurt, death, and
+  preview animations.
+- **Platformer tiles** with repeatable blocks, standalone platforms, spikes,
+  coins, foliage, and portal pieces.
+- **Game UI** with portrait states, health bars, coin widgets, lock icon, and
+  completion icons.
+- **Layered backgrounds** for parallax: far, mid, and foreground.
+- **Runtime manifests** so you can see frame sizes, animation counts, asset
+  names, and bounds data.
+- **Playable level JSON** for the simple, medium, hard, and playground maps.
+- **Music and SFX** for jumping, punching, coins, spikes, portals, enemies, UI,
+  and level completion.
+- **Prompt recipe** with the key user prompts for the mockup, gameplay atlas,
+  UI atlas, backgrounds, hero, orc, splash screen, music, and SFX.
 
 ## Asset Previews
 
@@ -52,6 +49,7 @@ pack that accompanies the video.
 
 ```text
 preview.gif
+prompts.html
 public/assets/
   index.json
   backgrounds/
@@ -64,26 +62,12 @@ public/assets/
   levels/
 ```
 
-## Want The Full Build?
+## Want The Full Walkthrough?
 
 [![VibeGameDev](https://raw.githubusercontent.com/chongdashu/vibejam-starter-pack/main/assets/vgd.png)](https://vibegamedev.com?utm_source=github&utm_medium=readme_footer&utm_campaign=vgd09)
 
-This public repo is intentionally limited to free resources. The full
-VibeGameDev member pack includes the complete source code and the development
-workspace.
+VibeGameDev members get the build-along version of Hero Quest with the Phaser
+project, starter branch, level editor, character gym, debug tools, iOS setup,
+mobile controls, combat, health, pickups, and polish systems.
 
-Brought to you by [VibeGameDev.com](https://vibegamedev.com?utm_source=github&utm_medium=readme_footer&utm_campaign=vgd09) - visit for more
-AI game dev resources, starter projects, source code, prompts, and agent
-workflows.
-
-[VibeGameDev.com](https://vibegamedev.com?utm_source=github&utm_medium=readme_footer&utm_campaign=vgd09) members get:
-
-- Complete Phaser source code.
-- The tutorial `start` branch with hero/orc assets preloaded.
-- Character, tile, background, playground, and level-editor systems.
-- Selected prompts, plans, and learnings captured during development.
-- Runtime assets, configs, authored levels, audio, UI, enemy behavior, iOS
-  support, and polish systems in one place.
-
-If you want to go beyond the free resource pack and study the full workflow,
-join [VibeGameDev](https://vibegamedev.com?utm_source=github&utm_medium=readme_footer&utm_campaign=vgd09).
+Join [VibeGameDev](https://vibegamedev.com?utm_source=github&utm_medium=readme_footer&utm_campaign=vgd09) to build the whole thing step by step.
